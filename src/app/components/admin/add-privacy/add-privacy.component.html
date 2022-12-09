@@ -1,0 +1,51 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="content-page">
+    <div class="content">
+      <app-header></app-header>
+      <div class="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="page-title-box">
+                <div class="btn-group float-right">
+                  <ol class="breadcrumb hide-phone p-0 m-0">
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Add Privacy</li>
+                  </ol>
+                </div>
+                <h4 class="page-title">Add Privacy</h4>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card m-b-30">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="">Enter Terms & Condition</label>
+                      <angular-editor id="editor1" name="privacyModel.terms_of_Use" [(ngModel)]="privacyModel.terms_of_Use" [config]="config"></angular-editor>
+                      <!-- <angular-editor id="editor1" formControlName="htmlContent1" [config]="editorConfig"></angular-editor> -->
+
+                    </div>
+                    <div class="col-12 pt-4">
+                      <label for="">Enter Privacy Policy</label>
+                      <angular-editor id="editor2" name="privacyModel.privacy_policy" [(ngModel)]="privacyModel.privacy_policy" [config]="config"></angular-editor>
+                      <!-- <angular-editor id="editor2" formControlName="htmlContent2" [config]="editorConfig"></angular-editor> -->
+                    </div>
+                    <div class="col-12 pt-4">
+                      <button *ngIf = !privacyModel.terms_of_Use class="btn btn-primary px-4 py-2" type="button" (click)="onSubmit()">Submit</button>
+                      <button *ngIf = privacyModel.terms_of_Use class="btn btn-primary px-4 py-2" type="button" (click)="updatePrivacy(privacyModel.id)">Update</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

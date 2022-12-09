@@ -1,0 +1,66 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="content-page">
+    <div class="content">
+      <app-header></app-header>
+      <div class="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="page-title-box">
+                <div class="btn-group float-right">
+                  <ol class="breadcrumb hide-phone p-0 m-0">
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Manage Enquires</li>
+                  </ol>
+                </div>
+                <h4 class="page-title">Manage Enquires</h4>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card m-b-30">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th width="15%">Name</th>
+                          <th width="20%">Email</th>
+                          <th width="40%">Message</th>
+                          <th width="10%">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr  *ngFor="let feedbackLists of feedbackList  | paginate : {
+                          itemsPerPage: pageSize,
+                          currentPage: page,
+                          totalItems: count
+                        }; let i = index">
+                          <td>{{pageSize * (page-1)+i+1}}</td>
+                          <td>{{feedbackLists.name}}</td>
+                          <td>{{feedbackLists.email}}</td>
+                          <td>
+                            <p>{{feedbackLists.message}}</p>
+                          </td>
+                          <td class="filter_td">
+                            <button class="btn btn-danger" type="button" (click)="deleteFeedback(feedbackLists._id)"><i class="mdi mdi-delete-forever"></i></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <pagination-controls  class="my-pagination"  previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                  </pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

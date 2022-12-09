@@ -1,0 +1,100 @@
+<div class="left side-menu">
+  <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
+    <i class="ion-close"></i>
+  </button>
+  <div class="topbar-left">
+    <div class="text-center">
+      <a [routerLink]="['/admin/dashboard']" class="logo"><img src="assets/images/logo.png" height="24" alt="logo"></a>
+    </div>
+  </div>
+  <!-- <div class="sidebar-inner slimscrollleft">
+    <div id="sidebar-menu">
+      <ul>
+        <li class="menu-title">Main</li>
+        <li>
+          <a href="index.html" class="waves-effect">
+            <i class="mdi mdi-airplay"></i>
+            <span> Dashboard <span class="badge badge-pill badge-primary float-right">7</span></span>
+          </a>
+        </li>
+        <li class="has_sub">
+          <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i> <span> Stylist </span>
+            <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+          <ul class="list-unstyled">
+            <li><a href="advanced-highlight.html">Create Category</a></li>
+            <li><a href="advanced-rating.html">View Category</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </div> end sidebarinner -->
+
+  <div class="sidebar-inner slimscrollleft">
+
+    <div id="sidebar-menu">
+      <ul>
+        <li>
+          <a [routerLink]="['/admin/dashboard']" class="waves-effect " [ngClass]='{"active": dashboard}'>
+            <i class="fa fa-desktop" aria-hidden="true"></i>
+            <span> Dashboard</span>
+          </a>
+        </li>
+        <li [ngClass]="{'nav-active': navOpen}">
+          <a href="javascript:void(0);" class="waves-effect" [ngClass]="{'active': navOpen}" data-toggle="collapse" href="#manageCat" role="button" aria-expanded="false" aria-controls="manageCat"><i class="mdi mdi-layers"></i> <span> Manage Categories </span>
+            <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+          <ul class="list-unstyled collapse" id="manageCat">
+            <li [ngClass]='{"active": addcategory}'>
+              <a [routerLink]="['/admin/add_category']" class="waves-effect">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                <span> Create Categories</span>
+              </a>
+            </li>
+            <li [ngClass]='{"active": viewcategory}'>
+              <a [routerLink]="['/admin/view_category']" class="waves-effect">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                <span> View Categoies</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- <li [ngClass]="{'nav-active': navOpen}"> -->
+        <!--<li [ngClass]="{'nav-active': navOpen2}">
+          <a href="javascript:void(0);" class="waves-effect" [ngClass]="{'active': navOpen2}" data-toggle="collapse" href="#managPrivacy" role="button" aria-expanded="false" aria-controls="managPrivacy"><i class="mdi mdi-layers"></i> <span> Manage Privacy </span>
+            <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+          <ul class="list-unstyled collapse" id="managPrivacy">
+            <li [ngClass]='{"active": add_privacy}'>
+              <a [routerLink]="['/admin/add_privacy']" class="waves-effect">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                <span> Create Privacy</span>
+              </a>
+            </li>
+           <li [ngClass]='{"active": viewcategory}'>
+              <a [routerLink]="['/admin/view_category']" class="waves-effect">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                <span> View Categoies</span>
+              </a>
+            </li> 
+          </ul>
+        </li>-->
+        <li>
+          <a [routerLink]="['/admin/add_privacy']" class="waves-effect " [ngClass]='{"active": add_privacy}'>
+            <i class="fa fa-desktop" aria-hidden="true"></i>
+            <span> Manage Privacy</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/admin/view_enquiry']" class="waves-effect " [ngClass]='{"active": view_enquiry}'>
+            <i class="fa fa-desktop" aria-hidden="true"></i>
+            <span> Manage Enquires</span>
+          </a>
+        </li>
+
+
+
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div *ngIf = "loading === true" class="loader-col">
+  <img src="assets/images/loader.svg">
+</div>
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="content-page">
+    <div class="content">
+      <app-header></app-header>
+      <div class="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="page-title-box">
+                <div class="btn-group float-right">
+                  <ol class="breadcrumb hide-phone p-0 m-0">
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item active">{{mainheading}}</li>
+                  </ol>
+                </div>
+                <h4 class="page-title">{{mainheading}}</h4>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card m-b-30">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label for="CategoryName" class="col-sm-12 col-form-label">Category Name</label>
+                    <div class="col-sm-12">
+                      <input class="form-control" type="text" id="CategoryName"  name="category_name" [(ngModel)]="categoryModel.category_name" (keyup)="validationCheck()">
+                    </div>
+                    <span class="valid-error " *ngIf ="validationCategoryName===true">*Please enter category name</span>
+                  </div>
+                  <div class="form-group row">
+                    <label for="CategoryName" class="col-sm-12 col-form-label">Category Logo</label>
+                    <div class="col-12">
+                      <div class="custom-file">
+                        <div class="pb-3">
+                          <!-- <img src="https://dummyimage.com/150x150/b8b8b8/fff&text=150*150" *ngIf="url" alt=""> -->
+                          <img [src]="imgurl" *ngIf="url" width="150" alt="">
+                        </div>
+                        <input #takeCategoryLogo type="file" name="categoryModel.category_logo" value="categoryModel.category_logo"  (change)="selectFile($event)" (keyup)="validationCheck()">
+                        <!-- <label class="custom-file-label" for="inputGroupFile04">Choose file</label> -->
+                      </div>
+                      <span class="valid-error " *ngIf ="validationCategoryLogo===true">*Please select category logo</span>
+                    </div>
+                    
+                  </div>
+                  <div class="btn_area">
+                    <button *ngIf = "!getId" class="btn btn-primary" type="button" (click)="onSubmit()">Submit</button>
+                    <button *ngIf = "getId" class="btn btn-primary" type="button" (click)="updateCategory()">Update</button>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

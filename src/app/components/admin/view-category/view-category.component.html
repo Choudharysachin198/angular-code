@@ -1,0 +1,91 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="content-page">
+    <div class="content">
+      <app-header></app-header>
+      <div class="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="page-title-box">
+                <div class="btn-group float-right">
+                  <ol class="breadcrumb hide-phone p-0 m-0">
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item active">View Category</li>
+                  </ol>
+                </div>
+                <h4 class="page-title">View Category</h4>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card m-b-30">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th width="40%">Name</th>
+                          <th width="35%">Logo</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                          <tr  *ngFor="let categoryLists of categoryList  | paginate : {
+                            itemsPerPage: pageSize,
+                            currentPage: page,
+                            totalItems: count
+                          }; let i = index">
+                            <td>{{pageSize * (page-1)+i+1}}</td>
+                            <td>{{categoryLists.category_name}}</td>
+                            <td><img src={{categoryLists.category_logo}} style="width:50px" alt=""></td>
+                            <td class="filter_td">
+                              <button class="btn btn-danger" type="button"><i class="mdi mdi-delete-forever" (click)="deleteCategory(categoryLists._id)"></i></button>
+                              <button class="btn btn-primary ml-2" type="button"><i class="fa fa-edit" (click) = "editCategory(categoryLists._id)"></i></button>
+<!--                                
+                               <button class="btn status checkbtn active-data"
+                                    title="Click to Activate Category" *ngIf="categoryModel.status==0 "
+                                    (click)="updateCategoryStatus(categoryLists._id)">
+                                    <i class="fa fa-check fa-2x"  aria-hidden="true"></i></button>
+                                      
+                                    <button class="btn status cancelbtn deactive-data"
+                                    title="Click to De-Activate Category"
+                                    *ngIf="categoryModel.status"
+                                    (click)="updateCategoryStatus(categoryLists._id)">
+                                    <i class="fa fa-times fa-2x"  aria-hidden="true"></i></button> -->
+
+                                    <div class="toggle_btn pl-2">
+                                      <label class="switch">
+                                        <input type="checkbox" *ngIf="categoryLists.status==1 "
+                                        (click)="updateCategoryStatus(categoryLists._id,categoryLists.status)" checked>
+
+                                        <input type="checkbox" *ngIf="categoryLists.status==0 "
+                                        (click)="updateCategoryStatus(categoryLists._id,categoryLists.status)" >
+                                        <span class="slider roundt"></span>
+                                      </label>
+                                    </div>
+                            </td>
+                          </tr>
+                       
+                        
+                       
+                        
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                  <pagination-controls  class="my-pagination"  previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                  </pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>
